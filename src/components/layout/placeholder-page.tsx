@@ -1,4 +1,5 @@
 import { SiteNav } from "@/components/nav/site-nav";
+import { Footer } from "@/components/layout/footer";
 import { Starfield } from "@/components/backgrounds/starfield";
 import { Container } from "@/components/ui/container";
 import { Display, Eyebrow, Lead } from "@/components/ui/typography";
@@ -25,6 +26,7 @@ export function PlaceholderPage({
           <Lead className="mt-6 max-w-xl">{description}</Lead>
         </Container>
       </main>
+      <Footer />
     </>
   );
 }
