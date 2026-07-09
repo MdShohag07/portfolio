@@ -30,6 +30,8 @@
   --color-electric-soft: #6fa8ff;
   --color-cyber: #8b5cf6;
   --color-cyber-soft: #b48cff;
+  --color-success: #34d399;
+  --color-danger: #f87171;
 
   /* ---- Gradients ---- */
   --gradient-accent: linear-gradient(135deg, var(--color-electric) 0%, var(--color-cyber) 100%);
@@ -86,6 +88,8 @@
   --color-electric-soft: var(--color-electric-soft);
   --color-cyber: var(--color-cyber);
   --color-cyber-soft: var(--color-cyber-soft);
+  --color-success: var(--color-success);
+  --color-danger: var(--color-danger);
 
   --color-background: var(--color-void);
 

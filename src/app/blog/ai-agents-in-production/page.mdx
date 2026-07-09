@@ -1,0 +1,46 @@
+import { PostHeader } from "@/components/blog/post-header";
+import { PostBody } from "@/components/blog/post-body";
+
+export const metadata = {
+  title: "What actually breaks when you put AI agents in production",
+  description:
+    "Demos are easy. Here's what we've learned shipping agent-driven automation that has to work every time.",
+};
+
+<PostHeader slug="ai-agents-in-production" />
+
+<PostBody>
+
+<Lead>
+  A demo has to work once, for an audience that wants it to succeed. Production has to work
+  every time, for users who assume it will fail. That gap is where most agent projects die.
+</Lead>
+
+## The failure modes nobody demos
+
+- **Silent wrongness.** An agent that returns a confident, plausible, incorrect answer is worse
+  than one that visibly fails — because nobody double-checks a system that looks like it's
+  working.
+- **Cost cliffs.** A workflow that's fine at 100 requests a day can get expensive fast at 10,000,
+  especially with multi-step agent chains that each call a model.
+- **Latency stacking.** Every tool call and model round-trip adds up. Users tolerate a 2-second
+  wait. They don't tolerate 20.
+
+## What we actually build around
+
+1. **Deterministic guardrails around probabilistic cores.** The agent proposes, a deterministic
+   check disposes. Anything touching money, data deletion, or external communication gets a
+   non-AI validation layer.
+2. **Structured outputs, always.** If a model call can return free text, it will — eventually, at
+   the worst possible moment. Every agent step returns a typed, validated shape.
+3. **Observability from day one.** If you can't see what the agent decided and why, you can't
+   debug it when it does something strange in front of a client.
+
+## The honest tradeoff
+
+Agent-driven automation is genuinely powerful for the right problem — the kind of "second brain"
+work that's tedious for humans and expensive to hard-code as fixed rules. It is not a shortcut
+past building a real system. The teams who treat it that way are the ones we get called in to
+fix six months later.
+
+</PostBody>

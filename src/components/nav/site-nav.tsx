@@ -6,14 +6,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { transition } from "@/lib/motion";
+import { navLinks } from "@/lib/data/nav-links";
 import { MenuToggle, MobileMenu } from "./mobile-menu";
-
-const LINKS = [
-  { href: "/work", label: "Work" },
-  { href: "/services", label: "Services" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
 
 export function SiteNav() {
   const { scrollY } = useScroll();
@@ -55,8 +49,8 @@ export function SiteNav() {
             NOVARA
           </Link>
 
-          <nav className="hidden items-center gap-8 md:flex">
-            {LINKS.map((link) => (
+          <nav className="hidden items-center gap-6 lg:flex">
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -68,7 +62,7 @@ export function SiteNav() {
             ))}
           </nav>
 
-          <Link href="/contact" data-cursor="interactive" className="hidden md:block">
+          <Link href="/contact" data-cursor="interactive" className="hidden lg:block">
             <Button variant="secondary" size="md" magnetic={false}>
               Start a Project
             </Button>

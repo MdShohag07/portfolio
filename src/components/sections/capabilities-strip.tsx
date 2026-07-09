@@ -8,7 +8,7 @@ import { Section } from "@/components/ui/section";
 import { Eyebrow, H2, Muted, Text } from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
 import { fadeUp, revealViewport, staggerContainer } from "@/lib/motion";
-import { services } from "@/lib/data/services";
+import { homepageServices } from "@/lib/data/services";
 
 export function CapabilitiesStrip() {
   return (
@@ -24,7 +24,7 @@ export function CapabilitiesStrip() {
           viewport={revealViewport}
           className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {services.map((service) => (
+          {homepageServices.map((service) => (
             <motion.div key={service.name} variants={fadeUp}>
               <GlassPanel className="h-full p-6" tilt={false}>
                 <Text className="text-foreground">{service.name}</Text>

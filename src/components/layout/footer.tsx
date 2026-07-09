@@ -9,11 +9,13 @@ const COLUMNS = [
       { href: "/work", label: "Work" },
       { href: "/services", label: "Services" },
       { href: "/about", label: "About" },
+      { href: "/blog", label: "Blog" },
     ],
   },
   {
     title: "Connect",
     links: [
+      { href: "/pricing", label: "Pricing" },
       { href: "/contact", label: "Contact" },
       { href: "mailto:hello@novara.studio", label: "hello@novara.studio" },
     ],

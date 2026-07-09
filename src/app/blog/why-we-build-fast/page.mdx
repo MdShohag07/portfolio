@@ -1,0 +1,47 @@
+import { PostHeader } from "@/components/blog/post-header";
+import { PostBody } from "@/components/blog/post-body";
+
+export const metadata = {
+  title: "Why we build fast (and what we refuse to skip)",
+  description:
+    "Speed is a design constraint, not a corner-cutting excuse. Here's what stays non-negotiable no matter the timeline.",
+};
+
+<PostHeader slug="why-we-build-fast" />
+
+<PostBody>
+
+<Lead>
+  Every client asks the same question in the first call: how fast can you move? The honest
+  answer is faster than most agencies, and slower than most founders want. Here's the actual
+  policy.
+</Lead>
+
+## Speed is a constraint, not a virtue
+
+A fast build that breaks in production isn't fast — it's a slower build with extra steps. When
+we say we build fast, we mean the *decisions* move fast: scope gets locked in days, not weeks,
+and we ship in reviewable increments instead of one big reveal at the end.
+
+What we don't compress is the part that determines whether the thing still works in six months:
+error handling, data modeling, and anything touching money or user data.
+
+## What we refuse to skip
+
+- **Type safety.** Every project ships in TypeScript, strict mode, no exceptions.
+- **A real staging environment.** "It worked on my machine" isn't a launch plan.
+- **Accessibility basics.** Keyboard navigation and screen reader support aren't a phase-two item.
+- **A rollback plan.** If a deploy breaks something, we know how to undo it in minutes, not hours.
+
+## Where the speed actually comes from
+
+Most of it isn't about typing faster. It's about not re-deciding things we already decided —
+which is the entire reason a design system exists before a single page gets built. Once the
+tokens, motion language, and component primitives are settled, every new section is assembly,
+not invention.
+
+The second source of speed is scope discipline. We'd rather ship a smaller version of the right
+thing than a complete version of the wrong thing. That's a conversation we have in week one, not
+a surprise in week six.
+
+</PostBody>

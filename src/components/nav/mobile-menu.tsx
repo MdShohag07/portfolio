@@ -6,13 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useLenis } from "lenis/react";
 import { Button } from "@/components/ui/button";
 import { fadeUp, staggerContainer, transition } from "@/lib/motion";
-
-const LINKS = [
-  { href: "/work", label: "Work" },
-  { href: "/services", label: "Services" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
+import { navLinks } from "@/lib/data/nav-links";
 
 export function MenuToggle({ open, onToggle }: { open: boolean; onToggle: () => void }) {
   return (
@@ -23,7 +17,7 @@ export function MenuToggle({ open, onToggle }: { open: boolean; onToggle: () => 
       aria-controls="mobile-menu"
       aria-label={open ? "Close menu" : "Open menu"}
       data-cursor="interactive"
-      className="relative z-50 flex h-10 w-10 items-center justify-center md:hidden"
+      className="relative z-50 flex h-10 w-10 items-center justify-center lg:hidden"
     >
       <span className="relative block h-4 w-5">
         <motion.span
@@ -63,21 +57,21 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={transition.glide}
-          className="fixed inset-0 z-40 bg-void/95 backdrop-blur-xl md:hidden"
+          className="fixed inset-0 z-40 overflow-y-auto bg-void/95 backdrop-blur-xl lg:hidden"
         >
           <motion.nav
-            variants={staggerContainer(0.08, 0.15)}
+            variants={staggerContainer(0.06, 0.15)}
             initial="hidden"
             animate="visible"
-            className="flex h-full flex-col items-center justify-center gap-8 px-6"
+            className="flex min-h-full flex-col items-center justify-center gap-5 px-6 py-24"
           >
-            {LINKS.map((link) => (
+            {navLinks.map((link) => (
               <motion.div key={link.href} variants={fadeUp}>
                 <Link
                   href={link.href}
                   onClick={onClose}
                   data-cursor="interactive"
-                  className="text-(length:--text-h2) font-medium tracking-[-0.02em] text-foreground"
+                  className="text-(length:--text-h3) font-medium tracking-[-0.02em] text-foreground"
                 >
                   {link.label}
                 </Link>

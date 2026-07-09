@@ -1,0 +1,52 @@
+import { PostHeader } from "@/components/blog/post-header";
+import { PostBody } from "@/components/blog/post-body";
+
+export const metadata = {
+  title: "Chrome extensions are the most underrated product surface",
+  description:
+    "No app store review, no install friction, direct access to the page context. Why we keep reaching for MV3.",
+};
+
+<PostHeader slug="chrome-extensions-are-underrated" />
+
+<PostBody>
+
+<Lead>
+  When a client's problem lives inside someone else's web app — a CRM, a booking tool, a
+  logistics dashboard they don't own — a browser extension is often the fastest real fix.
+</Lead>
+
+## The pitch nobody makes
+
+Everyone defaults to "let's build a web app" or "let's build a mobile app." Both are correct
+answers to a different question. If the actual problem is *this specific page, in this specific
+tool, doesn't do the one thing my team needs it to do*, a Manifest V3 extension gets you there
+in weeks, not a quarter.
+
+No app store review cycle worth mentioning. No install friction beyond a Chrome Web Store link.
+Direct access to the DOM, the network requests, and the page context of whatever tool your team
+already lives in.
+
+## What Arrival Pro actually does
+
+Dispatch teams were re-typing arrival data across four separate systems. We didn't ask them to
+switch tools — we built an extension that reads context from whatever tab is active, auto-fills
+the matching fields in the other systems, and flags mismatches before they turn into disputes.
+
+```
+1. Extension detects an arrival record on the active tab
+2. Cross-references it against the other three systems via background sync
+3. Auto-fills matches, flags conflicts
+4. Dispatcher reviews flagged items only
+```
+
+That's the whole product. It doesn't replace the four systems — it removes the manual bridge
+between them.
+
+## When *not* to reach for an extension
+
+If the workflow needs to work outside a browser, or the client doesn't control which browser
+their team uses, this pattern breaks down fast. It's a scalpel, not a platform strategy — but for
+the right problem, nothing ships faster.
+
+</PostBody>
