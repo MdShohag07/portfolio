@@ -16,11 +16,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Studio — 2050",
-    template: "%s — Studio 2050",
+    default: "NOVARA — Engineering the Future.",
+    template: "%s — NOVARA",
   },
   description:
-    "A cinematic digital agency experience: software, AI, and design built like it shipped from the future.",
+    "NOVARA is a digital engineering studio building software, AI, and products like they shipped from the future.",
 };
 
 export default function RootLayout({
