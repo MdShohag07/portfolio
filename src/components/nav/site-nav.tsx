@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { transition } from "@/lib/motion";
+import { MenuToggle, MobileMenu } from "./mobile-menu";
 
 const LINKS = [
   { href: "/work", label: "Work" },
@@ -17,6 +18,7 @@ const LINKS = [
 export function SiteNav() {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 24);
@@ -71,8 +73,12 @@ export function SiteNav() {
               Start a Project
             </Button>
           </Link>
+
+          <MenuToggle open={menuOpen} onToggle={() => setMenuOpen((v) => !v)} />
         </div>
       </Container>
+
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </motion.header>
   );
 }

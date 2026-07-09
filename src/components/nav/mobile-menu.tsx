@@ -1,0 +1,96 @@
+"use client";
+
+import { useEffect } from "react";
+import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
+import { useLenis } from "lenis/react";
+import { Button } from "@/components/ui/button";
+import { fadeUp, staggerContainer, transition } from "@/lib/motion";
+
+const LINKS = [
+  { href: "/work", label: "Work" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
+export function MenuToggle({ open, onToggle }: { open: boolean; onToggle: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-expanded={open}
+      aria-controls="mobile-menu"
+      aria-label={open ? "Close menu" : "Open menu"}
+      data-cursor="interactive"
+      className="relative z-50 flex h-10 w-10 items-center justify-center md:hidden"
+    >
+      <span className="relative block h-4 w-5">
+        <motion.span
+          className="absolute left-0 top-0 h-px w-full bg-foreground"
+          animate={{ rotate: open ? 45 : 0, y: open ? 7 : 0 }}
+          transition={transition.micro}
+        />
+        <motion.span
+          className="absolute left-0 bottom-0 h-px w-full bg-foreground"
+          animate={{ rotate: open ? -45 : 0, y: open ? -7 : 0 }}
+          transition={transition.micro}
+        />
+      </span>
+    </button>
+  );
+}
+
+export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const lenis = useLenis();
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    if (open) lenis?.stop();
+    else lenis?.start();
+    return () => {
+      document.body.style.overflow = "";
+      lenis?.start();
+    };
+  }, [open, lenis]);
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          id="mobile-menu"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={transition.glide}
+          className="fixed inset-0 z-40 bg-void/95 backdrop-blur-xl md:hidden"
+        >
+          <motion.nav
+            variants={staggerContainer(0.08, 0.15)}
+            initial="hidden"
+            animate="visible"
+            className="flex h-full flex-col items-center justify-center gap-8 px-6"
+          >
+            {LINKS.map((link) => (
+              <motion.div key={link.href} variants={fadeUp}>
+                <Link
+                  href={link.href}
+                  onClick={onClose}
+                  data-cursor="interactive"
+                  className="text-(length:--text-h2) font-medium tracking-[-0.02em] text-foreground"
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
+            ))}
+            <motion.div variants={fadeUp} className="mt-4">
+              <Link href="/contact" onClick={onClose} data-cursor="interactive">
+                <Button variant="primary">Start a Project</Button>
+              </Link>
+            </motion.div>
+          </motion.nav>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
