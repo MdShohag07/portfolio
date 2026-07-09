@@ -37,7 +37,7 @@ export function FeaturedWork() {
         >
           {projects.map((project) => (
             <motion.div key={project.slug} variants={fadeUp}>
-              <Link href="/work" data-cursor="interactive" className="block h-full">
+              <Link href={`/work/${project.slug}`} data-cursor="interactive" className="block h-full">
                 <GlassPanel className="h-full">
                   <div
                     className={cn(
@@ -52,7 +52,7 @@ export function FeaturedWork() {
                     <Text className="mt-2 text-(length:--text-h3) font-medium text-foreground">
                       {project.name}
                     </Text>
-                    <Text className="mt-3">{project.description}</Text>
+                    <Text className="mt-3">{project.summary}</Text>
                   </div>
                 </GlassPanel>
               </Link>
