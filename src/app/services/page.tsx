@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { SiteNav } from "@/components/nav/site-nav";
 import { Footer } from "@/components/layout/footer";
 import { Starfield } from "@/components/backgrounds/starfield";
@@ -12,16 +13,17 @@ import { WhyUsComparison } from "@/components/services/why-us-comparison";
 import { TestimonialsSection } from "@/components/services/testimonials-section";
 import { ClosingCta } from "@/components/sections/closing-cta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Services",
   description: "Software, AI, and design services — engineered as one connected team.",
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (
     <>
       <SiteNav />
-      <main className="relative">
+      <main id="main-content" className="relative">
         <div className="fixed inset-0 -z-10">
           <Starfield />
         </div>

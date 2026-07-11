@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Starfield } from "@/components/backgrounds/starfield";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -20,6 +21,10 @@ const colorSwatches: Array<{ name: string; className: string; value: string }> =
   { name: "cyber-soft", className: "bg-cyber-soft", value: "#b48cff" },
 ];
 
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
+
 const typeScale: Array<{ label: string; token: string; sample: string }> = [
   { label: "Display", token: "--text-display", sample: "Build the future" },
   { label: "H1", token: "--text-h1", sample: "Build the future" },
@@ -29,7 +34,7 @@ const typeScale: Array<{ label: string; token: string; sample: string }> = [
 
 export default function DesignSystemPage() {
   return (
-    <main className="relative">
+    <main id="main-content" className="relative">
       <div className="fixed inset-0 -z-10">
         <Starfield />
       </div>

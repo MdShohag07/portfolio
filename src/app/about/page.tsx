@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { SiteNav } from "@/components/nav/site-nav";
 import { Footer } from "@/components/layout/footer";
 import { Starfield } from "@/components/backgrounds/starfield";
@@ -9,16 +10,17 @@ import { MissionVision } from "@/components/about/mission-vision";
 import { JourneyTimeline } from "@/components/about/journey-timeline";
 import { ClosingCta } from "@/components/sections/closing-cta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description: "The NOVARA studio — mission, vision, and how we got here.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
     <>
       <SiteNav />
-      <main className="relative">
+      <main id="main-content" className="relative">
         <div className="fixed inset-0 -z-10">
           <Starfield />
         </div>

@@ -1,11 +1,14 @@
 import { PostHeader } from "@/components/blog/post-header";
 import { PostBody } from "@/components/blog/post-body";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Why we build fast (and what we refuse to skip)",
   description:
     "Speed is a design constraint, not a corner-cutting excuse. Here's what stays non-negotiable no matter the timeline.",
-};
+  path: "/blog/why-we-build-fast",
+  type: "article",
+});
 
 <PostHeader slug="why-we-build-fast" />
 

@@ -1,11 +1,14 @@
 import { PostHeader } from "@/components/blog/post-header";
 import { PostBody } from "@/components/blog/post-body";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "What actually breaks when you put AI agents in production",
   description:
     "Demos are easy. Here's what we've learned shipping agent-driven automation that has to work every time.",
-};
+  path: "/blog/ai-agents-in-production",
+  type: "article",
+});
 
 <PostHeader slug="ai-agents-in-production" />
 

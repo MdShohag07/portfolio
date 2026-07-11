@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { SiteNav } from "@/components/nav/site-nav";
 import { Footer } from "@/components/layout/footer";
 import { Starfield } from "@/components/backgrounds/starfield";
@@ -9,16 +10,17 @@ import { PricingCalculator } from "@/components/pricing/pricing-calculator";
 import { FaqAccordion } from "@/components/pricing/faq-accordion";
 import { faqs } from "@/lib/data/pricing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Pricing",
   description: "An interactive estimate calculator for software, AI, and product builds.",
-};
+  path: "/pricing",
+});
 
 export default function PricingPage() {
   return (
     <>
       <SiteNav />
-      <main className="relative">
+      <main id="main-content" className="relative">
         <div className="fixed inset-0 -z-10">
           <Starfield />
         </div>

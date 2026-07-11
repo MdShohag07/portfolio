@@ -67,6 +67,15 @@ export function ContactForm() {
     setStatus("success");
   }
 
+  function a11yProps(field: keyof FormState) {
+    const hasError = Boolean(touched[field] && errors[field]);
+    return {
+      required: true,
+      "aria-invalid": hasError,
+      "aria-describedby": hasError ? `${field}-error` : undefined,
+    } as const;
+  }
+
   if (status === "success") {
     return (
       <GlassPanel className="p-8 text-center" tilt={false}>
@@ -89,6 +98,7 @@ export function ContactForm() {
               onBlur={() => handleBlur("name")}
               className={cn(fieldClasses, touched.name && errors.name && "border-danger/60")}
               autoComplete="name"
+              {...a11yProps("name")}
             />
           </FieldWrapper>
 
@@ -101,6 +111,7 @@ export function ContactForm() {
               onBlur={() => handleBlur("email")}
               className={cn(fieldClasses, touched.email && errors.email && "border-danger/60")}
               autoComplete="email"
+              {...a11yProps("email")}
             />
           </FieldWrapper>
         </div>
@@ -117,6 +128,7 @@ export function ContactForm() {
               onChange={(e) => handleChange("projectType", e.target.value)}
               onBlur={() => handleBlur("projectType")}
               className={cn(fieldClasses, touched.projectType && errors.projectType && "border-danger/60")}
+              {...a11yProps("projectType")}
             >
               <option value="">Select one</option>
               <option value="website">Marketing Website</option>
@@ -134,6 +146,7 @@ export function ContactForm() {
               onChange={(e) => handleChange("budget", e.target.value)}
               onBlur={() => handleBlur("budget")}
               className={cn(fieldClasses, touched.budget && errors.budget && "border-danger/60")}
+              {...a11yProps("budget")}
             >
               <option value="">Select a range</option>
               <option value="under-10k">Under $10k</option>
@@ -152,6 +165,7 @@ export function ContactForm() {
             onChange={(e) => handleChange("message", e.target.value)}
             onBlur={() => handleBlur("message")}
             className={cn(fieldClasses, "resize-none", touched.message && errors.message && "border-danger/60")}
+            {...a11yProps("message")}
           />
         </FieldWrapper>
 

@@ -24,7 +24,11 @@ export function FieldWrapper({
         {label}
       </label>
       {children}
-      {error && <Muted className="mt-1.5 text-danger">{error}</Muted>}
+      {error && (
+        <Muted id={`${htmlFor}-error`} role="alert" className="mt-1.5 text-danger">
+          {error}
+        </Muted>
+      )}
     </div>
   );
 }

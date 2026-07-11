@@ -6,7 +6,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
   return (
     <>
       <SiteNav />
-      <main className="relative">
+      <main id="main-content" className="relative">
         <div className="fixed inset-0 -z-10">
           <Starfield />
         </div>

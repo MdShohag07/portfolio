@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { SiteNav } from "@/components/nav/site-nav";
 import { Footer } from "@/components/layout/footer";
 import { Container } from "@/components/ui/container";
@@ -9,16 +10,17 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { ContactInfo } from "@/components/contact/contact-info";
 import { CalendarBooking } from "@/components/contact/calendar-booking";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description: "Start a project with NOVARA — send a message or book a call.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
     <>
       <SiteNav />
-      <main className="relative">
+      <main id="main-content" className="relative">
         <div className="fixed inset-0 -z-10">
           <AmbientSceneLazy />
         </div>

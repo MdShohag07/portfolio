@@ -1,11 +1,14 @@
 import { PostHeader } from "@/components/blog/post-header";
 import { PostBody } from "@/components/blog/post-body";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Chrome extensions are the most underrated product surface",
   description:
     "No app store review, no install friction, direct access to the page context. Why we keep reaching for MV3.",
-};
+  path: "/blog/chrome-extensions-are-underrated",
+  type: "article",
+});
 
 <PostHeader slug="chrome-extensions-are-underrated" />
 

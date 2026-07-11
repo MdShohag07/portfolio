@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { SiteNav } from "@/components/nav/site-nav";
 import { Footer } from "@/components/layout/footer";
 import { Starfield } from "@/components/backgrounds/starfield";
@@ -8,16 +9,17 @@ import { Display, Eyebrow, Lead } from "@/components/ui/typography";
 import { WorkIndexList } from "@/components/work/work-index-list";
 import { projects } from "@/lib/data/projects";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Work",
   description: "Selected NOVARA case studies — software, AI, and product builds.",
-};
+  path: "/work",
+});
 
 export default function WorkPage() {
   return (
     <>
       <SiteNav />
-      <main className="relative">
+      <main id="main-content" className="relative">
         <div className="fixed inset-0 -z-10">
           <Starfield />
         </div>

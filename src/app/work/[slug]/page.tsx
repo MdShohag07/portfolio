@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { pageMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site-config";
 import { SiteNav } from "@/components/nav/site-nav";
 import { Footer } from "@/components/layout/footer";
 import { Starfield } from "@/components/backgrounds/starfield";
@@ -24,10 +26,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  return {
+  return pageMetadata({
     title: project.name,
     description: project.summary,
-  };
+    path: `/work/${slug}`,
+  });
 }
 
 export default async function CaseStudyPage({
@@ -42,10 +45,25 @@ export default async function CaseStudyPage({
   const currentIndex = projects.findIndex((p) => p.slug === slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.name,
+    description: project.summary,
+    url: `${siteConfig.url}/work/${slug}`,
+    creator: { "@type": "Organization", name: siteConfig.name },
+    about: project.category,
+    datePublished: project.year,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <SiteNav />
-      <main className="relative">
+      <main id="main-content" className="relative">
         <div className="fixed inset-0 -z-10">
           <Starfield />
         </div>
