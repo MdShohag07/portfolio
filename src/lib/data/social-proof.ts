@@ -11,12 +11,14 @@ export const clients: Client[] = [
 
 export type TrustStat = {
   label: string;
-  value: string;
+  value: number;
+  decimals?: number;
+  suffix?: string;
 };
 
 export const trustStats: TrustStat[] = [
-  { label: "Industries served", value: "6+" },
-  { label: "Countries", value: "3" },
-  { label: "Repeat client rate", value: "100%" },
-  { label: "Avg. project rating", value: "5.0" },
+  { label: "Industries served", value: 6, suffix: "+" },
+  { label: "Countries", value: 3 },
+  { label: "Repeat client rate", value: 100, suffix: "%" },
+  { label: "Avg. project rating", value: 5, decimals: 1 },
 ];
