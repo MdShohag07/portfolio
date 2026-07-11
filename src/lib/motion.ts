@@ -72,3 +72,9 @@ export const staggerContainer = (stagger = 0.12, delayChildren = 0): Variants =>
 
 /** Shared viewport config for scroll-triggered reveals. */
 export const revealViewport = { once: true, margin: "-10% 0px -10% 0px" };
+
+/**
+ * Same reveal, but replays every time a section crosses the viewport —
+ * scrolling back up re-triggers the entrance animation in reverse.
+ */
+export const loopRevealViewport = { once: false, margin: "-15% 0px -15% 0px" };

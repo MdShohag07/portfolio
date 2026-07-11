@@ -10,6 +10,8 @@ export type Tier = {
   label: string;
   multiplier: number;
   description: string;
+  startingAt: string;
+  bestFor: string;
 };
 
 export type AddOn = {
@@ -27,9 +29,30 @@ export const projectTypes: ProjectType[] = [
 ];
 
 export const tiers: Tier[] = [
-  { id: "starter", label: "Starter", multiplier: 1, description: "Core scope, single platform." },
-  { id: "growth", label: "Growth", multiplier: 1.6, description: "Expanded scope, integrations included." },
-  { id: "enterprise", label: "Enterprise", multiplier: 2.4, description: "Compliance, scale, dedicated support." },
+  {
+    id: "starter",
+    label: "Starter",
+    multiplier: 1,
+    description: "Core scope, single platform.",
+    startingAt: "$8,000",
+    bestFor: "A focused first version, shipped fast.",
+  },
+  {
+    id: "growth",
+    label: "Growth",
+    multiplier: 1.6,
+    description: "Expanded scope, integrations included.",
+    startingAt: "$13,000",
+    bestFor: "Scaling a validated product with more moving parts.",
+  },
+  {
+    id: "enterprise",
+    label: "Enterprise",
+    multiplier: 2.4,
+    description: "Compliance, scale, dedicated support.",
+    startingAt: "Custom",
+    bestFor: "Complex requirements and a dedicated team.",
+  },
 ];
 
 export const addOns: AddOn[] = [
