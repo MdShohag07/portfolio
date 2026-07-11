@@ -7,41 +7,13 @@ import { GlassPanel } from "@/components/ui/glass-panel";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { AnimatedNumber } from "@/components/ui/animated-number";
+import { CircuitTrace, CornerBrackets, LiveDot } from "@/components/ui/hud";
 import { Eyebrow, H2, Muted, Text } from "@/components/ui/typography";
 import { fadeUp, loopRevealViewport, staggerContainer, transition } from "@/lib/motion";
 import { clients, trustStats } from "@/lib/data/social-proof";
 import type { TrustStat } from "@/lib/data/social-proof";
 
 const STAT_ICONS = [FiGlobe, FiRepeat, FiStar, FiAward];
-
-function LiveDot() {
-  return (
-    <span className="relative flex h-1.5 w-1.5">
-      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-electric-soft opacity-75" />
-      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-electric-soft shadow-[var(--glow-electric)]" />
-    </span>
-  );
-}
-
-function CornerBrackets() {
-  return (
-    <>
-      <span className="pointer-events-none absolute -left-px -top-px h-3 w-3 border-l border-t border-electric-soft/50 transition-colors duration-300 group-hover:border-electric-soft" />
-      <span className="pointer-events-none absolute -right-px -top-px h-3 w-3 border-r border-t border-electric-soft/50 transition-colors duration-300 group-hover:border-electric-soft" />
-      <span className="pointer-events-none absolute -bottom-px -left-px h-3 w-3 border-b border-l border-electric-soft/50 transition-colors duration-300 group-hover:border-electric-soft" />
-      <span className="pointer-events-none absolute -bottom-px -right-px h-3 w-3 border-b border-r border-electric-soft/50 transition-colors duration-300 group-hover:border-electric-soft" />
-    </>
-  );
-}
-
-function CircuitTrace() {
-  return (
-    <span
-      aria-hidden
-      className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-electric via-cyber to-transparent opacity-70"
-    />
-  );
-}
 
 function ClientCard({ client, index }: { client: (typeof clients)[number]; index: number }) {
   return (

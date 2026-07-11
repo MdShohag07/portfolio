@@ -123,6 +123,8 @@
   --animate-fog-drift: fog-drift 40s linear infinite;
   --animate-scroll-hint: scroll-hint 2s var(--ease-in-out) infinite;
   --animate-orbit-float: orbit-float 8s var(--ease-in-out) infinite;
+  --animate-glitch: glitch-flicker 5s steps(1) infinite;
+  --animate-scan: scan-sweep 3s linear infinite;
 }
 
 @keyframes aurora-drift-1 {
@@ -154,6 +156,19 @@
 @keyframes orbit-float {
   0%, 100% { transform: translate(var(--orbit-x, 0), var(--orbit-y, 0)); }
   50% { transform: translate(calc(var(--orbit-x, 0) + 6px), calc(var(--orbit-y, 0) - 10px)); }
+}
+
+@keyframes glitch-flicker {
+  0%, 92%, 100% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+  93% { clip-path: inset(10% 0 60% 0); transform: translate(-2px, 1px); }
+  94% { clip-path: inset(60% 0 5% 0); transform: translate(2px, -1px); }
+  95% { clip-path: inset(20% 0 40% 0); transform: translate(-1px, 0); }
+  96% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+}
+
+@keyframes scan-sweep {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
 }
 
 * {
