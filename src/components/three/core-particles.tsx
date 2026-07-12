@@ -5,14 +5,15 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 const COUNT = 260;
+const COUNT_MOBILE = 120;
 
-function buildShell(innerRadius: number, outerRadius: number) {
-  const positions = new Float32Array(COUNT * 3);
-  const colors = new Float32Array(COUNT * 3);
+function buildShell(innerRadius: number, outerRadius: number, count: number) {
+  const positions = new Float32Array(count * 3);
+  const colors = new Float32Array(count * 3);
   const electric = new THREE.Color("#f4e409");
   const cyber = new THREE.Color("#ff2b7d");
 
-  for (let i = 0; i < COUNT; i++) {
+  for (let i = 0; i < count; i++) {
     const radius = innerRadius + Math.random() * (outerRadius - innerRadius);
     const theta = Math.random() * Math.PI * 2;
     const phi = Math.acos(2 * Math.random() - 1);
@@ -30,9 +31,18 @@ function buildShell(innerRadius: number, outerRadius: number) {
   return { positions, colors };
 }
 
-export function CoreParticles({ reducedMotion = false }: { reducedMotion?: boolean }) {
+export function CoreParticles({
+  reducedMotion = false,
+  isMobile = false,
+}: {
+  reducedMotion?: boolean;
+  isMobile?: boolean;
+}) {
   const points = useRef<THREE.Points>(null);
-  const { positions, colors } = useMemo(() => buildShell(1.9, 3.4), []);
+  const { positions, colors } = useMemo(
+    () => buildShell(1.9, 3.4, isMobile ? COUNT_MOBILE : COUNT),
+    [isMobile]
+  );
 
   useFrame((_, delta) => {
     if (reducedMotion || !points.current) return;

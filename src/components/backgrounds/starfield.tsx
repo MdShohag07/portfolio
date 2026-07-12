@@ -15,6 +15,8 @@ type Star = {
 
 const STAR_DENSITY = 1 / 9000; // stars per px^2, tuned for a sparse deep-space feel
 const MAX_STARS = 420;
+const MAX_STARS_MOBILE = 120; // phones: fewer stars + a capped DPR (see resize())
+const MOBILE_BREAKPOINT = 768;
 
 /**
  * Full-viewport canvas starfield. Stars drift almost imperceptibly and
@@ -43,12 +45,14 @@ export function Starfield({ className }: { className?: string }) {
       if (!el) return;
       width = el.clientWidth;
       height = el.clientHeight;
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const isMobile = width < MOBILE_BREAKPOINT;
+      dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1 : 2);
       el.width = width * dpr;
       el.height = height * dpr;
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const count = Math.min(MAX_STARS, Math.floor(width * height * STAR_DENSITY));
+      const maxStars = isMobile ? MAX_STARS_MOBILE : MAX_STARS;
+      const count = Math.min(maxStars, Math.floor(width * height * STAR_DENSITY));
       stars = Array.from({ length: count }, () => {
         const x = Math.random() * width;
         const y = Math.random() * height;

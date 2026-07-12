@@ -15,10 +15,12 @@ export function DigitalCore({
   pointer,
   scrollProgress,
   reducedMotion = false,
+  isMobile = false,
 }: {
   pointer: React.RefObject<PointerState>;
   scrollProgress: React.RefObject<number>;
   reducedMotion?: boolean;
+  isMobile?: boolean;
 }) {
   const group = useRef<THREE.Group>(null);
   const material = useRef<DigitalCoreMaterialImpl>(null);
@@ -54,7 +56,9 @@ export function DigitalCore({
   return (
     <group ref={group}>
       <mesh>
-        <icosahedronGeometry args={[1.4, 24]} />
+        {/* Desktop/tablet keep the full 24-detail mesh (~37.5k verts); phones
+            get a lighter 8-detail mesh (~4.9k verts) through the same shader. */}
+        <icosahedronGeometry args={[1.4, isMobile ? 8 : 24]} />
         <digitalCoreMaterial ref={material} uAmplitude={0.22} uFrequency={1.6} />
       </mesh>
       <mesh ref={wireframe} scale={1.35}>

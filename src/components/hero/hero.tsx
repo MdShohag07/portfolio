@@ -14,10 +14,14 @@ import { LiveDot } from "@/components/ui/hud";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 import { useScrollProgressRef } from "@/hooks/use-scroll-progress-ref";
 import { useViewportPointer } from "@/hooks/use-viewport-pointer";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 export function Hero() {
   const { ref, progress } = useScrollProgressRef<HTMLElement>();
   const pointer = useViewportPointer();
+  // The 3D core stays on every device — just rendered at a lighter quality
+  // tier on phones (see hero-scene.tsx) instead of being swapped out.
+  const isMobile = useMediaQuery("(max-width: 767px)");
 
   return (
     <section ref={ref} className="relative flex min-h-svh items-center overflow-hidden bg-void">
@@ -26,7 +30,7 @@ export function Hero() {
       </div>
       <Atmosphere />
       <div className="absolute inset-0">
-        <HeroSceneLazy scrollProgress={progress} />
+        <HeroSceneLazy scrollProgress={progress} isMobile={isMobile} />
       </div>
       <OrbitingPanels pointer={pointer} />
 

@@ -10,8 +10,15 @@ const RINGS = [
   { radius: 2.9, tube: 0.004, rotation: [Math.PI / 3, -0.3, 0.5] as const, speed: 0.025, color: "#f4e409" },
 ];
 
-export function OrbitRings({ reducedMotion = false }: { reducedMotion?: boolean }) {
+export function OrbitRings({
+  reducedMotion = false,
+  isMobile = false,
+}: {
+  reducedMotion?: boolean;
+  isMobile?: boolean;
+}) {
   const refs = useRef<(THREE.Mesh | null)[]>([]);
+  const radialSegments = isMobile ? 48 : 128;
 
   useFrame((_, delta) => {
     if (reducedMotion) return;
@@ -31,7 +38,7 @@ export function OrbitRings({ reducedMotion = false }: { reducedMotion?: boolean 
           }}
           rotation={ring.rotation}
         >
-          <torusGeometry args={[ring.radius, ring.tube, 8, 128]} />
+          <torusGeometry args={[ring.radius, ring.tube, 8, radialSegments]} />
           <meshBasicMaterial color={ring.color} transparent opacity={0.35} />
         </mesh>
       ))}
