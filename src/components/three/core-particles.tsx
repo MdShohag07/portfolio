@@ -9,8 +9,8 @@ const COUNT = 260;
 function buildShell(innerRadius: number, outerRadius: number) {
   const positions = new Float32Array(COUNT * 3);
   const colors = new Float32Array(COUNT * 3);
-  const electric = new THREE.Color("#6fa8ff");
-  const cyber = new THREE.Color("#b48cff");
+  const electric = new THREE.Color("#f4e409");
+  const cyber = new THREE.Color("#ff2b7d");
 
   for (let i = 0; i < COUNT; i++) {
     const radius = innerRadius + Math.random() * (outerRadius - innerRadius);

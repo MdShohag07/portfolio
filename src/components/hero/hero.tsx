@@ -10,6 +10,7 @@ import { ScrollIndicator } from "./scroll-indicator";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Display, Eyebrow } from "@/components/ui/typography";
+import { LiveDot } from "@/components/ui/hud";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 import { useScrollProgressRef } from "@/hooks/use-scroll-progress-ref";
 import { useViewportPointer } from "@/hooks/use-viewport-pointer";
@@ -38,12 +39,13 @@ export function Hero() {
         >
           <motion.div variants={fadeUp}>
             <Eyebrow className="mx-auto justify-center before:hidden">
+              <LiveDot className="bg-neon-pink" glow="shadow-[var(--glow-pink)]" />
               Digital Engineering Studio
             </Eyebrow>
           </motion.div>
 
           <motion.div variants={fadeUp}>
-            <Display className="mt-6 bg-gradient-to-b from-foreground to-silver bg-clip-text text-transparent">
+            <Display className="glitch-hover mt-6 animate-glitch bg-gradient-to-b from-foreground to-silver bg-clip-text text-transparent">
               NOVARA
             </Display>
           </motion.div>
@@ -57,10 +59,17 @@ export function Hero() {
 
           <motion.div variants={fadeUp} className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link href="/contact" data-cursor="interactive">
-              <Button variant="primary">Start a Project</Button>
+              <Button
+                variant="primary"
+                className="bg-gradient-to-r from-neon-yellow to-neon-pink text-void shadow-[var(--glow-yellow)] hover:shadow-[var(--glow-pink)]"
+              >
+                Start a Project
+              </Button>
             </Link>
             <Link href="/work" data-cursor="interactive">
-              <Button variant="secondary">Explore Our Work</Button>
+              <Button variant="secondary" className="hover:border-neon-pink/60">
+                Explore Our Work
+              </Button>
             </Link>
           </motion.div>
         </motion.div>

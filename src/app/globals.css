@@ -33,14 +33,21 @@
   --color-success: #34d399;
   --color-danger: #f87171;
 
+  /* ---- Cyberpunk accent (Night City duotone, used for HUD "alert" moments) ---- */
+  --color-neon-yellow: #f4e409;
+  --color-neon-pink: #ff2b7d;
+
   /* ---- Gradients ---- */
   --gradient-accent: linear-gradient(135deg, var(--color-electric) 0%, var(--color-cyber) 100%);
   --gradient-glow: radial-gradient(circle at center, var(--color-electric-soft) 0%, transparent 70%);
+  --gradient-cyberpunk: linear-gradient(115deg, var(--color-neon-yellow) 0%, var(--color-neon-pink) 100%);
 
   /* ---- Glow shadows ---- */
   --glow-electric: 0 0 24px -4px rgba(47, 124, 255, 0.55);
   --glow-cyber: 0 0 24px -4px rgba(139, 92, 246, 0.55);
   --glow-soft: 0 0 60px -12px rgba(255, 255, 255, 0.12);
+  --glow-yellow: 0 0 24px -4px rgba(244, 228, 9, 0.6);
+  --glow-pink: 0 0 24px -4px rgba(255, 43, 125, 0.6);
 
   /* ---- Fluid type scale ---- */
   --text-display: clamp(3.25rem, 3rem + 5vw, 9rem);
@@ -90,6 +97,9 @@
   --color-cyber-soft: var(--color-cyber-soft);
   --color-success: var(--color-success);
   --color-danger: var(--color-danger);
+
+  --color-neon-yellow: var(--color-neon-yellow);
+  --color-neon-pink: var(--color-neon-pink);
 
   --color-background: var(--color-void);
 
@@ -169,6 +179,29 @@
 @keyframes scan-sweep {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100%); }
+}
+
+/* Night City hazard stripe — used sparingly as a corner tag, never a fill. */
+.stripe-hazard {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-neon-yellow),
+    var(--color-neon-yellow) 6px,
+    #0a0a0a 6px,
+    #0a0a0a 12px
+  );
+}
+
+/* Chromatic-aberration burst on hover — the CP2077 "readout glitch" beat.
+   Trigger it directly (`.glitch-hover:hover`) or via a `.group` ancestor. */
+.glitch-hover {
+  position: relative;
+  transition: text-shadow 0.15s var(--ease-out);
+}
+.glitch-hover:hover,
+.group:hover .glitch-hover {
+  animation: glitch-flicker 0.5s steps(2) 1;
+  text-shadow: 2px 0 var(--color-neon-pink), -2px 0 var(--color-electric-soft);
 }
 
 * {

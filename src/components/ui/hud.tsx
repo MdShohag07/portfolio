@@ -3,11 +3,17 @@
  * treatment — corner brackets, a live status ping, a circuit-trace edge.
  */
 
-export function LiveDot({ className = "bg-electric-soft" }: { className?: string }) {
+export function LiveDot({
+  className = "bg-electric-soft",
+  glow = "shadow-[var(--glow-electric)]",
+}: {
+  className?: string;
+  glow?: string;
+}) {
   return (
     <span className="relative flex h-1.5 w-1.5">
       <span className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 ${className}`} />
-      <span className={`relative inline-flex h-1.5 w-1.5 rounded-full shadow-[var(--glow-electric)] ${className}`} />
+      <span className={`relative inline-flex h-1.5 w-1.5 rounded-full ${glow} ${className}`} />
     </span>
   );
 }
@@ -23,11 +29,17 @@ export function CornerBrackets({ color = "border-electric-soft/50" }: { color?: 
   );
 }
 
-export function CircuitTrace({ className = "" }: { className?: string }) {
+export function CircuitTrace({
+  className = "",
+  gradient = "from-electric via-cyber",
+}: {
+  className?: string;
+  gradient?: string;
+}) {
   return (
     <span
       aria-hidden
-      className={`pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-electric via-cyber to-transparent opacity-70 ${className}`}
+      className={`pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r ${gradient} to-transparent opacity-70 ${className}`}
     />
   );
 }

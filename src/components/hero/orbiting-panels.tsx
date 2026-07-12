@@ -6,6 +6,15 @@ import { Muted, Text } from "@/components/ui/typography";
 import { fadeUp, transition } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
+function PanelTrace() {
+  return (
+    <span
+      aria-hidden
+      className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-neon-yellow via-neon-pink to-transparent opacity-70"
+    />
+  );
+}
+
 type PointerMotion = { x: MotionValue<number>; y: MotionValue<number> };
 
 function useParallax({ x, y }: PointerMotion, strength: number) {
@@ -59,6 +68,7 @@ export function OrbitingPanels({ pointer }: { pointer: PointerMotion }) {
         float="animate-orbit-float"
       >
         <GlassPanel className="p-4" tilt={false}>
+          <PanelTrace />
           <Muted className="uppercase tracking-[0.2em]">Featured Work</Muted>
           <Text className="mt-1 text-foreground">Arrival Pro</Text>
           <Muted className="mt-0.5">Chrome Extension · 2025</Muted>
@@ -73,8 +83,9 @@ export function OrbitingPanels({ pointer }: { pointer: PointerMotion }) {
         float="animate-orbit-float [animation-delay:-2.6s]"
       >
         <GlassPanel className="p-4" tilt={false}>
+          <PanelTrace />
           <div className="flex items-baseline gap-1">
-            <Text className="text-(length:--text-h3) font-semibold text-foreground">99.9%</Text>
+            <Text className="glitch-hover text-(length:--text-h3) font-semibold text-neon-yellow">99.9%</Text>
           </div>
           <Muted className="mt-0.5">Uptime across shipped products</Muted>
         </GlassPanel>
@@ -88,15 +99,16 @@ export function OrbitingPanels({ pointer }: { pointer: PointerMotion }) {
         float="animate-orbit-float [animation-delay:-4.4s]"
       >
         <GlassPanel className="p-4" tilt={false}>
+          <PanelTrace />
           <div className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-electric-soft shadow-[var(--glow-electric)]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-neon-pink shadow-[var(--glow-pink)]" />
             <Muted className="uppercase tracking-[0.2em]">System Status</Muted>
           </div>
           <div className="mt-3 flex items-end gap-1">
             {[6, 10, 5, 12, 8, 14, 7].map((h, i) => (
               <span
                 key={i}
-                className="w-1 rounded-full bg-gradient-to-t from-electric to-cyber-soft"
+                className="w-1 rounded-full bg-gradient-to-t from-neon-yellow to-neon-pink"
                 style={{ height: `${h * 2}px` }}
               />
             ))}
@@ -113,6 +125,7 @@ export function OrbitingPanels({ pointer }: { pointer: PointerMotion }) {
         float="animate-orbit-float [animation-delay:-1.2s]"
       >
         <GlassPanel className="p-4" tilt={false}>
+          <PanelTrace />
           <Muted className="uppercase tracking-[0.2em]">Stack</Muted>
           <Text className="mt-1 text-foreground">Next.js · R3F · AI</Text>
         </GlassPanel>

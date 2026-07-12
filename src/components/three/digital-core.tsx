@@ -59,7 +59,7 @@ export function DigitalCore({
       </mesh>
       <mesh ref={wireframe} scale={1.35}>
         <icosahedronGeometry args={[1.4, 1]} />
-        <meshBasicMaterial color="#6fa8ff" wireframe transparent opacity={0.08} />
+        <meshBasicMaterial color="#ff2b7d" wireframe transparent opacity={0.1} />
       </mesh>
     </group>
   );

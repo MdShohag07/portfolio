@@ -22,8 +22,8 @@ export function HeroScene({ scrollProgress }: { scrollProgress: React.RefObject<
     >
       <fog attach="fog" args={["#030304", 5, 11]} />
       <ambientLight intensity={0.4} />
-      <pointLight position={[4, 3, 4]} intensity={40} color="#6fa8ff" />
-      <pointLight position={[-4, -2, -3]} intensity={25} color="#b48cff" />
+      <pointLight position={[4, 3, 4]} intensity={40} color="#f4e409" />
+      <pointLight position={[-4, -2, -3]} intensity={25} color="#ff2b7d" />
 
       <DigitalCore pointer={pointer as React.RefObject<PointerState>} scrollProgress={scrollProgress} reducedMotion={reducedMotion} />
       <OrbitRings reducedMotion={reducedMotion} />

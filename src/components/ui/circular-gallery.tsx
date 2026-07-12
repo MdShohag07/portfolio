@@ -39,18 +39,22 @@ function CardFace({
         className="absolute inset-0 overflow-hidden rounded-(--radius-lg) border border-glass-border-strong bg-graphite"
         style={{ transform: "rotateY(180deg)" }}
       >
-        <CornerBrackets />
-        <CircuitTrace />
+        <CornerBrackets color="border-neon-pink/50" />
+        <CircuitTrace gradient="from-neon-yellow via-neon-pink" />
+        <span
+          aria-hidden
+          className="stripe-hazard pointer-events-none absolute -top-1 right-4 h-2 w-8 rotate-45 opacity-50"
+        />
         <div
           aria-hidden
           className="absolute inset-0 opacity-[0.15]"
           style={{
             backgroundImage:
-              "repeating-linear-gradient(0deg, rgba(111,168,255,0.4) 0px, transparent 1px, transparent 28px), repeating-linear-gradient(90deg, rgba(111,168,255,0.4) 0px, transparent 1px, transparent 28px)",
+              "repeating-linear-gradient(0deg, rgba(255,43,125,0.4) 0px, transparent 1px, transparent 28px), repeating-linear-gradient(90deg, rgba(255,43,125,0.4) 0px, transparent 1px, transparent 28px)",
           }}
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-          <span className="flex h-14 w-14 items-center justify-center rounded-full border border-electric-soft/40 font-semibold text-electric-soft shadow-[var(--glow-electric)]">
+          <span className="flex h-14 w-14 items-center justify-center rounded-full border border-neon-yellow/40 font-semibold text-neon-yellow shadow-[var(--glow-yellow)]">
             N
           </span>
           <span className="font-mono text-(length:--text-micro) uppercase tracking-[0.3em] text-faint">
@@ -63,24 +67,31 @@ function CardFace({
 
   return (
     <div className="absolute inset-0 overflow-hidden rounded-(--radius-lg) border border-glass-border-strong bg-void">
-      <CornerBrackets />
-      <CircuitTrace />
+      <CornerBrackets color="border-neon-pink/50" />
+      <CircuitTrace gradient="from-neon-yellow via-neon-pink" />
+      <span
+        aria-hidden
+        className="stripe-hazard pointer-events-none absolute -top-1 right-4 h-2 w-8 rotate-45 opacity-50"
+      />
 
       <div className={cn("relative h-full w-full bg-void bg-gradient-to-br", item.gradient)}>
         <div className="absolute inset-0 bg-gradient-to-t from-void via-void/70 to-void/10" />
 
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-electric-soft/25 to-transparent animate-scan"
+          className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-neon-yellow/25 to-transparent animate-scan"
         />
 
         <div className="absolute inset-x-0 top-0 flex items-center justify-between p-5">
           <div className="flex items-center gap-2">
-            <LiveDot className={item.concept ? "bg-cyber-soft" : "bg-electric-soft"} />
+            <LiveDot
+              className={item.concept ? "bg-neon-pink" : "bg-neon-yellow"}
+              glow={item.concept ? "shadow-[var(--glow-pink)]" : "shadow-[var(--glow-yellow)]"}
+            />
             <span
               className={cn(
                 "font-mono text-(length:--text-micro) uppercase tracking-[0.2em]",
-                item.concept ? "text-cyber-soft" : "text-electric-soft"
+                item.concept ? "text-neon-pink" : "text-neon-yellow"
               )}
             >
               {item.subtitle}
@@ -95,7 +106,12 @@ function CardFace({
           </h3>
           <p className="mt-2 text-(length:--text-small) leading-relaxed text-silver/80">{item.summary}</p>
 
-          <div className="mt-4 inline-flex items-center gap-1.5 font-mono text-(length:--text-micro) uppercase tracking-[0.2em] text-electric-soft">
+          <div
+            className={cn(
+              "mt-4 inline-flex items-center gap-1.5 font-mono text-(length:--text-micro) uppercase tracking-[0.2em]",
+              item.concept ? "text-neon-pink" : "text-neon-yellow"
+            )}
+          >
             {item.concept ? "View Work" : "View Case Study"}
             <FiArrowUpRight className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </div>
@@ -129,7 +145,7 @@ function GalleryCard({
     const world = ((itemAngle + r) % 360 + 360) % 360;
     const normalized = world > 180 ? 360 - world : world;
     const focus = Math.max(0, 1 - normalized / 90);
-    return `0 0 ${focus * 50}px -6px rgba(47,124,255,${focus * 0.6})`;
+    return `0 0 ${focus * 50}px -6px rgba(255,43,125,${focus * 0.6})`;
   });
 
   // backface-visibility is unreliable across browsers once you're a few
@@ -242,11 +258,11 @@ export function CircularGallery({ items }: { items: CircularGalleryItem[] }) {
         <div className="relative flex h-[78%] w-[80%] items-center justify-center overflow-hidden rounded-(--radius-lg) border border-glass-border">
           <div
             aria-hidden
-            className="pointer-events-none absolute h-[500px] w-full max-w-[900px] rounded-full bg-[radial-gradient(ellipse,rgba(47,124,255,0.14),rgba(139,92,246,0.08)_45%,transparent_75%)] blur-2xl"
+            className="pointer-events-none absolute h-[500px] w-full max-w-[900px] rounded-full bg-[radial-gradient(ellipse,rgba(244,228,9,0.12),rgba(255,43,125,0.1)_45%,transparent_75%)] blur-2xl"
           />
 
           <div className="pointer-events-none absolute top-6 left-0 right-0 z-10 flex items-center justify-center gap-3 font-mono text-(length:--text-micro) uppercase tracking-[0.3em] text-faint">
-            <LiveDot />
+            <LiveDot className="bg-neon-yellow" glow="shadow-[var(--glow-yellow)]" />
             Scroll To Rotate Archive
           </div>
 
