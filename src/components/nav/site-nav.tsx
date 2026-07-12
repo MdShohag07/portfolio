@@ -35,6 +35,11 @@ export function SiteNav() {
         }}
       />
       <motion.div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-neon-yellow via-neon-pink to-transparent"
+        style={{ opacity: borderOpacity }}
+      />
+      <motion.div
         className="absolute inset-0 -z-10 backdrop-blur-xl transition-opacity duration-300"
         style={{ background: "var(--color-void)", opacity: scrolled ? 0.72 : 0 }}
         aria-hidden
@@ -44,7 +49,7 @@ export function SiteNav() {
           <Link
             href="/"
             data-cursor="interactive"
-            className="text-(length:--text-body-lg) font-semibold tracking-[-0.02em] text-foreground"
+            className="glitch-hover text-(length:--text-body-lg) font-semibold tracking-[-0.02em] text-foreground"
           >
             NOVARA
           </Link>
@@ -55,15 +60,21 @@ export function SiteNav() {
                 key={link.href}
                 href={link.href}
                 data-cursor="interactive"
-                className="text-(length:--text-small) text-silver transition-colors hover:text-foreground"
+                className="group/link relative text-(length:--text-small) text-silver transition-colors hover:text-neon-yellow"
               >
                 {link.label}
+                <span className="absolute inset-x-0 -bottom-1 h-px origin-left scale-x-0 bg-gradient-to-r from-neon-yellow to-neon-pink transition-transform duration-300 group-hover/link:scale-x-100" />
               </Link>
             ))}
           </nav>
 
           <Link href="/contact" data-cursor="interactive" className="hidden lg:block">
-            <Button variant="secondary" size="md" magnetic={false}>
+            <Button
+              variant="secondary"
+              size="md"
+              magnetic={false}
+              className="border-neon-yellow/40 text-neon-yellow hover:border-transparent hover:bg-gradient-to-r hover:from-neon-yellow hover:to-neon-pink hover:text-void hover:shadow-[var(--glow-pink)]"
+            >
               Start a Project
             </Button>
           </Link>
